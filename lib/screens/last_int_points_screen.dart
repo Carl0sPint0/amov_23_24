@@ -42,11 +42,11 @@ class LastIntPointScreen extends StatelessWidget {
                 itemCount: documents.length,
                 itemBuilder: (context, index) {
                   var data = documents[index].data() as Map<String, dynamic>;
-                  return FilledButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/locations/intPoints', arguments: '${data['id']}');
-                    },
-                    child: Text(data['name']),
+                  return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(data['name']),
+                      ],
                   );
                 },
               );

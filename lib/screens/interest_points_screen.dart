@@ -1,6 +1,5 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -96,6 +95,16 @@ class _InterestPointsScreenState extends State<InterestPointsScreen> {
                           Text(data['dislikes'].toString())
                         ],
                       ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                        children:[
+                          FilledButton(
+                            onPressed: () async {
+                            await _addToSharedPreferences(data['id']);
+                            },
+                            child: Text("Add to historic")),
+                        ]
+                      )
                     ],
                   ),
                 ),
@@ -128,4 +137,31 @@ Future<void> uploadDataToFirestore(Map<String,dynamic> data, int num, bool flag)
   } catch (e) {
     print('Error uploading data: $e');
   }
+}
+
+Future<void> _addToSharedPreferences(String id) async {
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+
+  String key = 'list';
+
+  if(preferences.containsKey(key)){
+
+    if(preferences.getStringList(key)?.length == 10){
+      preferences.getStringList(key)?.removeAt(0);
+      List<String>? newIdList = preferences.getStringList(key);
+      newIdList?.add(id);
+      preferences.setStringList(key, newIdList!);
+    }else{
+      List<String>? newIdList = preferences.getStringList(key);
+      newIdList?.add(id);
+      preferences.setStringList(key, newIdList!);
+    }
+
+  }else{
+
+    List<String> newIdList = [id];
+    preferences.setStringList(key, newIdList);
+
+  }
+
 }

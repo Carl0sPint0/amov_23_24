@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
 import 'screens/home_screen.dart';
-import 'screens/interest_point_display_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,12 +45,12 @@ class _MyAppState extends State<MyApp> {
           );
         }
 
-        if (settings.name == '/locations/intPoints/intPointDisplay') {
+        /*if (settings.name == '/locations/intPoints/intPointDisplay') {
           final args = settings.arguments as String;
           return MaterialPageRoute(
               builder: (context) => InterestPointDisplayScreen(queryKey: args)
           );
-        }
+        }*/
 
         if (settings.name == '/lastIntPoints') {
           final args = settings.arguments as HashMap<String, List<String>>;

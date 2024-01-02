@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
                   final HashMap<String, List<String>> map = await _getSharedPreferences();
                   Navigator.pushNamed(context, '/lastIntPoints', arguments: map);
                 },
-                child: const Text("Go to history screen"))
+                child: const Text("Go to historicscreen"))
           ],
         ),
       ),
