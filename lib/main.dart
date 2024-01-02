@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:amov_23_24/screens/interest_points_screen.dart';
 import 'package:amov_23_24/screens/last_int_points_screen.dart';
 import 'package:amov_23_24/screens/locations_screen.dart';
@@ -37,18 +39,26 @@ class MyApp extends StatelessWidget {
             builder: (context) => InterestPointsScreen(queryKey: args),
           );
         }
+
         if (settings.name == '/locations/intPoints/intPointDisplay') {
           final args = settings.arguments as String;
           return MaterialPageRoute(
               builder: (context) => InterestPointDisplayScreen(queryKey: args)
           );
         }
+
+        if (settings.name == '/lastIntPoints') {
+          final args = settings.arguments as HashMap<String, List<String>>;
+          return MaterialPageRoute(
+              builder: (context) => LastIntPointScreen(map: args)
+          );
+        }
+
         return null;
       },
       routes: {
         '/': (context) => const HomeScreen(),
         '/locations': (context) => LocationsScreen(),
-        '/lastIntPoints': (context) => const LastIntPointScreen(),
       },
     );
   }

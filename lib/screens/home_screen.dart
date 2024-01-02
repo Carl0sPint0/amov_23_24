@@ -1,4 +1,7 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -20,8 +23,9 @@ class HomeScreen extends StatelessWidget {
                 },
                 child: const Text("Go to locations screen")),
             FilledButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, '/lastIntPoints');
+                onPressed: () async{
+                  final HashMap<String, List<String>> map = await _getSharedPreferences();
+                  Navigator.pushNamed(context, '/lastIntPoints', arguments: map);
                 },
                 child: const Text("Go to history screen"))
           ],
@@ -29,4 +33,14 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<HashMap<String, List<String>>> _getSharedPreferences() async {
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+
+  final HashMap<String, List<String>> map = HashMap<String, List<String>>();
+  if(preferences.containsKey('list')){
+    map['list'] = preferences.getStringList('list')!;
+  }
+  return map;
 }

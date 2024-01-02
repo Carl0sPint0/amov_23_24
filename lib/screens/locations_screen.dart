@@ -1,10 +1,14 @@
-// HomeScreen.dart
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class LocationsScreen extends StatelessWidget {
+class LocationsScreen extends StatefulWidget {
   LocationsScreen({super.key});
 
+  @override
+  State<LocationsScreen> createState() => _LocationsScreenState();
+}
+
+class _LocationsScreenState extends State<LocationsScreen> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
