@@ -9,7 +9,6 @@ class InterestPoint{
   String description = "";
   List<String> images = [];
   String ownerId = "";
-  //status
-  //voters
-  //rating
+  int? likes = 0;
+  int? dislikes = 0;
 }
