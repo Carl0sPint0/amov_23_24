@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "543916519422",
+    "project_id": "amov2324",
+    "storage_bucket": "amov2324.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543916519422:android:c7f4037e8b973bbb26daaf",
+        "android_client_info": {
+          "package_name": "pt.isec.amov.amov_23_24"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxRQKzzdlIp_ryWYznoSJO8h6ycAq3P5Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
